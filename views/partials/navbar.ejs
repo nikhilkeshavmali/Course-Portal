@@ -1,0 +1,21 @@
+<nav class="navbar">
+  <div class="container nav-container">
+    <a href="/" class="logo">📚 LearnHub</a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/courses">Courses</a></li>
+      <li><a href="/about">About</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="#" class="btn-outline">Login</a>
+      <a href="#" class="btn-primary">Sign Up</a>
+    </div>
+    <div class="mobile-menu-icon" onclick="toggleMenu()">☰</div>
+  </div>
+</nav>
+
+<script>
+  function toggleMenu() {
+    document.querySelector('.nav-links').classList.toggle('active');
+  }
+</script>

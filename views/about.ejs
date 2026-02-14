@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %> | LearnHub</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* ---------- GLOBAL STYLES ---------- */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Inter", sans-serif;
+      }
+
+      body {
+        background: #f8fafc;
+        color: #0f172a;
+        line-height: 1.6;
+      }
+
+      .container {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      /* ---------- NAVBAR (same as home/courses) ---------- */
+      .navbar {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        padding: 1rem 0;
+      }
+
+      .nav-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+
+      .logo {
+        font-size: 1.8rem;
+        font-weight: 800;
+        background: linear-gradient(135deg, #2563eb, #7c3aed);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-decoration: none;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        font-weight: 500;
+        color: #0f172a;
+        transition: color 0.3s;
+      }
+
+      .nav-links a:hover {
+        color: #2563eb;
+      }
+
+      .nav-actions {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .btn-outline {
+        padding: 0.5rem 1.2rem;
+        border: 2px solid #2563eb;
+        border-radius: 40px;
+        font-weight: 600;
+        color: #2563eb;
+        text-decoration: none;
+        transition: 0.3s;
+      }
+
+      .btn-outline:hover {
+        background: #2563eb;
+        color: white;
+      }
+
+      .btn-primary {
+        padding: 0.5rem 1.5rem;
+        background: linear-gradient(135deg, #2563eb, #7c3aed);
+        color: white;
+        border-radius: 40px;
+        font-weight: 600;
+        text-decoration: none;
+        box-shadow: 0 10px 20px -8px rgba(37, 99, 235, 0.4);
+        transition: 0.3s;
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 15px 25px -8px rgba(37, 99, 235, 0.5);
+      }
+
+      .mobile-menu-icon {
+        display: none;
+        font-size: 1.8rem;
+        cursor: pointer;
+      }
+
+      @media (max-width: 768px) {
+        .nav-links,
+        .nav-actions {
+          display: none;
+          width: 100%;
+          flex-direction: column;
+          align-items: center;
+          gap: 1rem;
+          margin-top: 1rem;
+        }
+        .nav-links.active,
+        .nav-actions.active {
+          display: flex;
+        }
+        .mobile-menu-icon {
+          display: block;
+        }
+      }
+
+      /* ---------- ABOUT PAGE SPECIFIC STYLES ---------- */
+      .about-section {
+        padding: 5rem 0;
+      }
+
+      .about-card {
+        background: white;
+        border-radius: 40px;
+        padding: 4rem;
+        box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.2);
+      }
+
+      .about-card h1 {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 2rem;
+        background: linear-gradient(135deg, #1e293b, #2563eb);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .about-card p {
+        margin-bottom: 1.5rem;
+        line-height: 1.8;
+        color: #334155;
+        font-size: 1.1rem;
+      }
+
+      .about-highlight {
+        background: linear-gradient(145deg, #f1f5f9, #ffffff);
+        padding: 2rem;
+        border-radius: 30px;
+        margin: 2rem 0;
+      }
+
+      .about-highlight h3 {
+        margin-bottom: 1rem;
+        color: #0f172a;
+      }
+
+      /* ---------- FOOTER (same as home/courses) ---------- */
+      .footer {
+        background: #0f172a;
+        color: #cbd5e1;
+        padding: 4rem 0 2rem;
+        margin-top: 3rem;
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 2rem;
+      }
+
+      .footer-col h4 {
+        color: white;
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+      }
+
+      .footer-col ul {
+        list-style: none;
+      }
+
+      .footer-col ul li {
+        margin-bottom: 0.5rem;
+      }
+
+      .footer-col a {
+        color: #cbd5e1;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .footer-col a:hover {
+        color: white;
+      }
+
+      .social-links {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .social-links a {
+        font-size: 1.5rem;
+      }
+
+      .footer-bottom {
+        text-align: center;
+        margin-top: 3rem;
+        padding-top: 2rem;
+        border-top: 1px solid #334155;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Include Navbar Partial -->
+    <%- include('partials/navbar') %>
+
+    <!-- About Section -->
+    <section class="about-section">
+      <div class="container">
+        <div class="about-card">
+          <h1>About LearnHub</h1>
+          <p>
+            Welcome to <strong>LearnHub</strong> – your gateway to quality tech
+            education. We are passionate about empowering learners with the
+            skills they need to thrive in the digital age. Our platform offers a
+            curated selection of courses taught by industry experts, designed to
+            bridge the gap between theoretical knowledge and practical
+            application.
+          </p>
+          <div class="about-highlight">
+            <h3>Our Mission</h3>
+            <p>
+              To make high-quality tech education accessible to everyone,
+              everywhere. We believe that learning should be flexible, engaging,
+              and directly applicable to real-world challenges.
+            </p>
+          </div>
+          <p>
+            Since our founding, we've helped thousands of students upskill,
+            switch careers, and achieve their goals. Whether you're a beginner
+            looking to start your journey or a professional seeking to deepen
+            your expertise, LearnHub has something for you.
+          </p>
+          <p>
+            <strong>Why choose us?</strong>
+          </p>
+          <ul style="margin-left: 2rem; line-height: 2">
+            <li>Expert-led courses with up-to-date content</li>
+            <li>Flexible learning at your own pace</li>
+            <li>Hands-on projects and real-world case studies</li>
+            <li>Supportive community and mentorship</li>
+            <li>Certificates of completion to boost your resume</li>
+          </ul>
+          <p style="margin-top: 2rem">
+            Join thousands of happy learners and start your journey today!
+          </p>
+          <a
+            href="/courses"
+            class="btn-primary"
+            style="display: inline-block; margin-top: 2rem"
+          >
+            Explore Courses
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Include Footer Partial -->
+    <%- include('partials/footer') %>
+  </body>
+</html>
