@@ -1,0 +1,1 @@
+{isLoggedIn ? <Dashboard /> : <Login />}

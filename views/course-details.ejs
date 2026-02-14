@@ -13,26 +13,136 @@
       rel="stylesheet"
     />
     <style>
-      /* Base styles */
+      /* ---------- GLOBAL STYLES ---------- */
       * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
         font-family: "Inter", sans-serif;
       }
+
       body {
         background: #f8fafc;
         color: #0f172a;
+        line-height: 1.6;
       }
+
       .container {
         max-width: 1280px;
         margin: 0 auto;
         padding: 0 2rem;
       }
-      /* Detail page */
+
+      /* ---------- NAVBAR (same as home/courses/about) ---------- */
+      .navbar {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        padding: 1rem 0;
+      }
+
+      .nav-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+
+      .logo {
+        font-size: 1.8rem;
+        font-weight: 800;
+        background: linear-gradient(135deg, #2563eb, #7c3aed);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-decoration: none;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        font-weight: 500;
+        color: #0f172a;
+        transition: color 0.3s;
+      }
+
+      .nav-links a:hover {
+        color: #2563eb;
+      }
+
+      .nav-actions {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .btn-outline {
+        padding: 0.5rem 1.2rem;
+        border: 2px solid #2563eb;
+        border-radius: 40px;
+        font-weight: 600;
+        color: #2563eb;
+        text-decoration: none;
+        transition: 0.3s;
+      }
+
+      .btn-outline:hover {
+        background: #2563eb;
+        color: white;
+      }
+
+      .btn-primary {
+        padding: 0.5rem 1.5rem;
+        background: linear-gradient(135deg, #2563eb, #7c3aed);
+        color: white;
+        border-radius: 40px;
+        font-weight: 600;
+        text-decoration: none;
+        box-shadow: 0 10px 20px -8px rgba(37, 99, 235, 0.4);
+        transition: 0.3s;
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 15px 25px -8px rgba(37, 99, 235, 0.5);
+      }
+
+      .mobile-menu-icon {
+        display: none;
+        font-size: 1.8rem;
+        cursor: pointer;
+      }
+
+      @media (max-width: 768px) {
+        .nav-links,
+        .nav-actions {
+          display: none;
+          width: 100%;
+          flex-direction: column;
+          align-items: center;
+          gap: 1rem;
+          margin-top: 1rem;
+        }
+        .nav-links.active,
+        .nav-actions.active {
+          display: flex;
+        }
+        .mobile-menu-icon {
+          display: block;
+        }
+      }
+
+      /* ---------- COURSE DETAIL PAGE STYLES ---------- */
       .detail-section {
         padding: 4rem 0;
       }
+
       .back-link {
         margin-bottom: 2rem;
         display: inline-block;
@@ -40,21 +150,25 @@
         text-decoration: none;
         font-weight: 500;
       }
+
       .back-link i {
         margin-right: 0.5rem;
       }
+
       .course-detail-card {
         background: white;
         border-radius: 40px;
         padding: 3rem;
         box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.2);
       }
+
       .course-detail-header {
         display: flex;
         align-items: center;
         gap: 2rem;
         margin-bottom: 2rem;
       }
+
       .course-icon {
         width: 100px;
         height: 100px;
@@ -66,43 +180,52 @@
         color: white;
         font-size: 3rem;
       }
+
       .course-detail-header h1 {
         font-size: 3rem;
         font-weight: 700;
       }
+
       .detail-grid {
         display: grid;
         grid-template-columns: 2fr 1fr;
         gap: 3rem;
         margin-top: 2rem;
       }
+
       .detail-info p {
         margin: 1.5rem 0;
         line-height: 1.8;
         color: #334155;
       }
+
       .detail-meta {
         background: #f1f5f9;
         padding: 2rem;
         border-radius: 30px;
       }
+
       .meta-item {
         display: flex;
         justify-content: space-between;
         padding: 1rem 0;
         border-bottom: 1px solid #cbd5e1;
       }
+
       .meta-item:last-child {
         border-bottom: none;
       }
+
       .meta-label {
         font-weight: 600;
         color: #0f172a;
       }
+
       .meta-value {
         font-weight: 700;
         color: #2563eb;
       }
+
       .btn-enroll {
         display: inline-block;
         width: 100%;
@@ -116,10 +239,12 @@
         margin-top: 2rem;
         transition: 0.3s;
       }
+
       .btn-enroll:hover {
         transform: translateY(-3px);
         box-shadow: 0 15px 30px -8px rgba(37, 99, 235, 0.5);
       }
+
       .btn-back {
         display: inline-block;
         padding: 0.8rem 2rem;
@@ -132,20 +257,77 @@
         transition: 0.3s;
         margin-top: 2rem;
       }
+
       .btn-back:hover {
         background: #2563eb;
         color: white;
       }
+
+      /* ---------- FOOTER (same as home/courses/about) ---------- */
+      .footer {
+        background: #0f172a;
+        color: #cbd5e1;
+        padding: 4rem 0 2rem;
+        margin-top: 3rem;
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 2rem;
+      }
+
+      .footer-col h4 {
+        color: white;
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+      }
+
+      .footer-col ul {
+        list-style: none;
+      }
+
+      .footer-col ul li {
+        margin-bottom: 0.5rem;
+      }
+
+      .footer-col a {
+        color: #cbd5e1;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .footer-col a:hover {
+        color: white;
+      }
+
+      .social-links {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .social-links a {
+        font-size: 1.5rem;
+      }
+
+      .footer-bottom {
+        text-align: center;
+        margin-top: 3rem;
+        padding-top: 2rem;
+        border-top: 1px solid #334155;
+      }
     </style>
   </head>
   <body>
+    <!-- Include Navbar Partial -->
     <%- include('partials/navbar') %>
 
+    <!-- Course Details Section -->
     <section class="detail-section">
       <div class="container">
-        <a href="/courses" class="back-link"
-          ><i class="fas fa-arrow-left"></i> Back to Courses</a
-        >
+        <a href="/courses" class="back-link">
+          <i class="fas fa-arrow-left"></i> Back to Courses
+        </a>
         <div class="course-detail-card">
           <div class="course-detail-header">
             <div class="course-icon">
@@ -209,6 +391,7 @@
       </div>
     </section>
 
+    <!-- Include Footer Partial -->
     <%- include('partials/footer') %>
   </body>
 </html>
